@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Logo from "./components/Logo";
+import SkipPreloader from "./components/SkipPreloader";
 
 export default function NotFound() {
   return (
     <div className="flex min-h-svh flex-col items-center justify-center bg-background px-8 text-center text-foreground">
-      <h1 className="mt-8 flex items-center gap-0 text-6xl -space-x-8 font-medium md:text-8xl">4<Logo size={150} />4</h1>
+      <SkipPreloader />
+      <h1 className="mt-8 flex items-center gap-0 font-medium" style={{ fontSize: 150, lineHeight: 1 }}>4<Logo size={150} />4</h1>
       <p className="mt-4 text-lg text-fourth">
         This page drifted off somewhere else.
       </p>

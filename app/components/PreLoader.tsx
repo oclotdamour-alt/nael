@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
 let hasShown = false;
+export function skipPreloader() { hasShown = true; }
 
 export default function PreLoader() {
   const [show, setShow] = useState(false);
