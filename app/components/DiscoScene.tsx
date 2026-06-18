@@ -3,6 +3,7 @@
 import { useRef, useEffect, Suspense, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import { clone as skeletonClone } from "three/examples/jsm/utils/SkeletonUtils.js";
 import * as THREE from "three";
 import { stopDiscoAudio } from "../lib/discoAudio";
 
@@ -106,24 +107,35 @@ function DiscoBall() {
 function DiscoCharacter() {
   const group = useRef<THREE.Group>(null);
   const { scene, animations } = useGLTF("/perso-idle.glb");
+
+  // Clone the scene AND its materials so the shiny disco look never leaks back
+  // onto the hero (useGLTF caches and shares the same scene/materials).
+  const clonedScene = useMemo(() => {
+    const c = skeletonClone(scene);
+    c.traverse((obj) => {
+      const mesh = obj as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      mesh.frustumCulled = false;
+      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      const cloned = mats.map((m) => {
+        const cm = m.clone();
+        if (cm instanceof THREE.MeshStandardMaterial) {
+          cm.roughness = 0.2;
+          cm.metalness = 0.5;
+        }
+        return cm;
+      });
+      mesh.material = Array.isArray(mesh.material) ? cloned : cloned[0];
+    });
+    return c;
+  }, [scene]);
+
   const { actions } = useAnimations(animations, group);
   const jumpRef = useRef({ y: 0, vy: 0, onGround: true });
 
   useEffect(() => {
     Object.values(actions).forEach((a) => a?.reset().fadeIn(0.3).play());
-    scene.traverse((obj) => {
-      if ((obj as THREE.Mesh).isMesh) {
-        const mesh = obj as THREE.Mesh;
-        const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
-        mats.forEach((m) => {
-          if (m instanceof THREE.MeshStandardMaterial) {
-            m.roughness = 0.2;
-            m.metalness = 0.5;
-          }
-        });
-      }
-    });
-  }, [actions, scene]);
+  }, [actions]);
 
   useFrame(({ clock }) => {
     if (!group.current) return;
@@ -148,7 +160,7 @@ function DiscoCharacter() {
     group.current.scale.set(1.8 / stretch, 1.8 * stretch, 1.8 / stretch);
   });
 
-  return <primitive ref={group} object={scene} scale={1.8} />;
+  return <primitive ref={group} object={clonedScene} scale={1.8} />;
 }
 
 function FloorReflection() {
