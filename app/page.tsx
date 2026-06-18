@@ -107,17 +107,28 @@ export default function Home() {
               <Link
                 key={project.slug}
                 href={`/projects/${project.slug}`}
-                className="group flex flex-col justify-between rounded-2xl border border-border/20 p-8 transition-colors hover:border-third"
+                className="group relative overflow-hidden rounded-2xl border border-border/20 transition-colors hover:border-third aspect-[4/3] flex flex-col justify-end"
               >
-                <div>
-                  <h3 className="text-2xl font-medium">{project.name}</h3>
-                  <p className="mt-1 text-sm text-fourth">
+                {/* Thumbnail */}
+                <Image
+                  src={project.thumbnail}
+                  alt={project.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300" />
+                {/* Content */}
+                <div className="relative z-10 p-6">
+                  <h3 className="text-xl font-medium text-white">{project.name}</h3>
+                  <p className="mt-0.5 text-xs text-white/50 uppercase tracking-widest">
                     {project.type} — {project.year}
                   </p>
+                  <span className="mt-3 inline-flex items-center text-sm font-medium text-white/80 opacity-0 transition-opacity group-hover:opacity-100">
+                    View project →
+                  </span>
                 </div>
-                <span className="mt-6 inline-flex items-center text-sm font-medium text-third opacity-0 transition-opacity group-hover:opacity-100">
-                  View project →
-                </span>
               </Link>
             ))}
           </div>

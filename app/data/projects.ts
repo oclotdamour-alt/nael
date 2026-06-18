@@ -6,6 +6,7 @@ export type Project = {
   summary: string;
   description: string;
   video: string;
+  thumbnail: string;
   images: string[];
 };
 
@@ -18,6 +19,7 @@ export const projects: Project[] = [
     summary: "An educational showreel that doubles as a sales pitch — perfect for founders who finally 'get it' and want that same energy for their brand.",
     description: "A school project built around one idea: branding isn't optional, it's a competitive advantage. Visual hierarchy, color psychology, and market positioning — compressed into 60 seconds of kinetic typography and dynamic transitions. Seamless transitions and strategic color shifts transform abstract branding theory into a tangible visual demonstration. It works as educational content and as a marketing piece at the same time.",
     video: "/projects/branding-explanation/Motiontexte.mp4",
+    thumbnail: "/projects/branding-explanation/Portada Web.png",
     images: [
       "/projects/branding-explanation/Portada Web.png",
       "/projects/branding-explanation/Cy1UM4hlMKXq99Ln2A8TTtFA4.png",
@@ -36,6 +38,7 @@ export const projects: Project[] = [
     summary: "Hyper-realistic 3D avatar designed for a hip-hop/trap DJ — cyberpunk Akira vibes meets American trap energy.",
     description: "Built with MetaHuman Creator and Unreal Engine, this avatar was designed for luisbernat_lxp, a trap DJ looking for a stage presence that hits as hard as his music. Facial tracking, neon glitch effects, and real-time music synchronization via Live Link were all on the table. What came out was a polished intro sequence and animated visual backdrop — something that transforms a live set into an experience.",
     video: "/projects/metahuman/Metahuman.MP4",
+    thumbnail: "/projects/metahuman/AuPHaBb5mnkJhRkIhTBKTXjKjpI.png",
     images: [
       "/projects/metahuman/AuPHaBb5mnkJhRkIhTBKTXjKjpI.png",
       "/projects/metahuman/FqjkTG4HHGY4rwD4qzEoxGdPfw.png",
@@ -53,6 +56,7 @@ export const projects: Project[] = [
     summary: "A personal exploration of Third Culture Kid identity — growing up between cultures, never fully belonging to one.",
     description: "Built in Unreal Engine 5 and Blender, Expat' Child turns abstract emotional experiences into 3D environments. Fragmented geometric structures that reassemble. Spaces caught between worlds. Compositions that feel like memories. The project explores cultural fragmentation, reverse culture shock, and the idea that identity is never finished — it's architecture that keeps rebuilding itself.",
     video: "/projects/expat-child/ExpatChild.mp4",
+    thumbnail: "/projects/expat-child/9toni6s13mcrrFkGogQVgijzA.png",
     images: [
       "/projects/expat-child/9toni6s13mcrrFkGogQVgijzA.png",
       "/projects/expat-child/9X0fD7LNfmSor6q6g2WC7WrCBTo.png",
@@ -71,6 +75,7 @@ export const projects: Project[] = [
     summary: "An interactive 3D journey inside the brain — visualizing how sound frequencies trigger physical reactions.",
     description: "What if you were the sound? In Sonestesia, your controller inputs generate frequencies that physically reshape the digital landscape in real-time. Built in Unreal Engine, the project puts users inside a neural environment where organic shapes pulse and morph in response to audio. Synesthesia-inspired visuals, neuroscience, and human-computer interaction collapsed into one immersive experience. Made with Pol Tarrés, Paula Palacio, and Carla Mártinez.",
     video: "/projects/sonestesia/Sonestesia.mp4",
+    thumbnail: "/projects/sonestesia/ysleAhEOoYMNDIAEv62GG3NtQSU.png",
     images: [
       "/projects/sonestesia/ysleAhEOoYMNDIAEv62GG3NtQSU.png",
     ],
