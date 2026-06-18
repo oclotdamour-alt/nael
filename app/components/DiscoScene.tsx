@@ -5,6 +5,38 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 
+function DiscoAudio() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const audio = new Audio("/disco-music.m4a");
+    audio.loop = true;
+    audio.volume = 0.7;
+    audioRef.current = audio;
+
+    const start = () => {
+      audio.play().catch(() => {});
+      window.removeEventListener("click", start);
+      window.removeEventListener("keydown", start);
+    };
+
+    // Try autoplay immediately, fall back to first interaction
+    audio.play().catch(() => {
+      window.addEventListener("click", start);
+      window.addEventListener("keydown", start);
+    });
+
+    return () => {
+      audio.pause();
+      audio.src = "";
+      window.removeEventListener("click", start);
+      window.removeEventListener("keydown", start);
+    };
+  }, []);
+
+  return null;
+}
+
 const COLORS = ["#ff0080", "#00ffff", "#ffff00", "#ff4400", "#aa00ff", "#00ff88"];
 
 function DiscoSpotlights() {
@@ -159,6 +191,7 @@ function FloorReflection() {
 export default function DiscoScene() {
   return (
     <div className="fixed inset-0 overflow-hidden" style={{ background: "#000" }}>
+      <DiscoAudio />
       <style>{`
         @keyframes discoText {
           0%   { color: #ff0080; text-shadow: 0 0 20px #ff0080, 0 0 50px #ff0080; }
