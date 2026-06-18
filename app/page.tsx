@@ -64,7 +64,7 @@ export default function Home() {
         {/* ── ABOUT ── */}
         <section
           id="about"
-          className="snap-section flex flex-col items-center justify-center px-6 py-24 md:px-24 md:py-0"
+          className="snap-section flex flex-col items-center justify-center px-6 md:px-24"
         >
           <div className="w-full max-w-3xl text-center">
             <h2 className="text-2xl sm:text-4xl md:text-6xl font-medium leading-[1.15] sm:leading-tight text-balance">
@@ -90,25 +90,25 @@ export default function Home() {
         {/* ── PROJECTS ── */}
         <section
           id="projects"
-          className="snap-section flex flex-col items-center justify-center px-6 py-24 md:px-24 md:py-0"
+          className="snap-section flex flex-col items-center justify-center px-6 md:px-24"
         >
-          <div className="mb-8 md:mb-12 flex w-full max-w-4xl items-center justify-between">
+          <div className="mb-6 md:mb-12 flex w-full max-w-4xl items-center justify-between">
             <h2 className="text-sm uppercase tracking-widest text-fourth">
               Selected Works
             </h2>
             <Link
               href="/projects"
-              className="text-sm font-medium text-third hover:underline"
+              className="text-xs md:text-sm font-medium text-third hover:underline"
             >
-              See all projects →
+              See all →
             </Link>
           </div>
-          <div className="grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+          <div className="grid w-full max-w-4xl grid-cols-2 gap-3 md:gap-8">
             {projects.map((project) => (
               <Link
                 key={project.slug}
                 href={`/projects/${project.slug}`}
-                className="group relative overflow-hidden rounded-2xl border border-border/20 transition-colors hover:border-third aspect-[4/3] flex flex-col justify-end"
+                className="group relative overflow-hidden rounded-xl md:rounded-2xl border border-border/20 transition-colors hover:border-third aspect-[4/3] flex flex-col justify-end"
               >
                 {/* Thumbnail */}
                 <Image
@@ -116,17 +116,17 @@ export default function Home() {
                   alt={project.name}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 50vw, 50vw"
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300" />
                 {/* Content */}
-                <div className="relative z-10 p-6">
-                  <h3 className="text-xl font-medium text-white">{project.name}</h3>
-                  <p className="mt-0.5 text-xs text-white/50 uppercase tracking-widest">
+                <div className="relative z-10 p-3 md:p-6">
+                  <h3 className="text-sm md:text-xl font-medium text-white leading-tight">{project.name}</h3>
+                  <p className="mt-0.5 text-[10px] md:text-xs text-white/50 uppercase tracking-widest">
                     {project.type} — {project.year}
                   </p>
-                  <span className="mt-3 inline-flex items-center text-sm font-medium text-white/80 opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="mt-3 hidden md:inline-flex items-center text-sm font-medium text-white/80 opacity-0 transition-opacity group-hover:opacity-100">
                     View project →
                   </span>
                 </div>
@@ -138,7 +138,7 @@ export default function Home() {
         {/* ── ARCHIVES ── */}
         <section
           id="archives"
-          className="snap-section flex flex-col items-center justify-center px-6 py-24 md:px-24 md:py-0"
+          className="snap-section flex flex-col items-center justify-center px-6 md:px-24"
         >
           <h2 className="mb-6 text-sm uppercase tracking-widest text-fourth">
             Archives
@@ -157,7 +157,7 @@ export default function Home() {
         {/* ── CONTACT ── */}
         <section
           id="contact"
-          className="snap-section flex flex-col items-center justify-center px-6 py-24 md:px-24 md:py-0"
+          className="snap-section flex flex-col items-center justify-center px-6 md:px-24"
         >
           <h2 className="mb-6 text-sm uppercase tracking-widest text-fourth">
             Contact

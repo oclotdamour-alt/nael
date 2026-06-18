@@ -59,19 +59,9 @@ body {
   scrollbar-width: none;
 }
 
-/* ── MOBILE: keep snap, but let sections grow so tall ones (Projects) aren't
-   clipped. proximity (not mandatory) snaps viewport-height sections while still
-   letting the user scroll freely through taller-than-viewport content. ── */
-@media (max-width: 767px) {
-  .snap-container {
-    scroll-snap-type: y proximity;
-  }
-  .snap-section {
-    scroll-snap-stop: normal;
-    height: auto;
-    min-height: 100svh;
-  }
-}
+/* Mobile keeps the same firm mandatory snap as desktop. Every section is sized
+   to fit one viewport (Projects uses a compact 2×2 grid on mobile) so no content
+   is clipped by the fixed-height snap sections. */
 
 @keyframes preloader-spin {
   0% {
