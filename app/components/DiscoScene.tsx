@@ -4,36 +4,14 @@ import { useRef, useEffect, Suspense, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
+import { stopDiscoAudio } from "../lib/discoAudio";
 
 function DiscoAudio() {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
   useEffect(() => {
-    const audio = new Audio("/disco-music.m4a");
-    audio.loop = true;
-    audio.volume = 0.7;
-    audioRef.current = audio;
-
-    const start = () => {
-      audio.play().catch(() => {});
-      window.removeEventListener("click", start);
-      window.removeEventListener("keydown", start);
-    };
-
-    // Try autoplay immediately, fall back to first interaction
-    audio.play().catch(() => {
-      window.addEventListener("click", start);
-      window.addEventListener("keydown", start);
-    });
-
-    return () => {
-      audio.pause();
-      audio.src = "";
-      window.removeEventListener("click", start);
-      window.removeEventListener("keydown", start);
-    };
+    // Audio was already started in KonamiCode during the keydown gesture.
+    // Just stop it when leaving the page.
+    return () => { stopDiscoAudio(); };
   }, []);
-
   return null;
 }
 

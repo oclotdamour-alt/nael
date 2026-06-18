@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { startDiscoAudio } from "../lib/discoAudio";
 
 const SEQUENCE = [
   "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
@@ -19,6 +20,7 @@ export default function KonamiCode() {
         progress.current += 1;
         if (progress.current === SEQUENCE.length) {
           progress.current = 0;
+          startDiscoAudio(); // start audio while keydown gesture is still active
           router.push("/disco");
         }
       } else {
