@@ -82,8 +82,56 @@ export const projects: Project[] = [
   },
 ];
 
-export const archives = [
-  { slug: "early-motion-tests", name: "Early Motion Tests", year: "2022" },
-  { slug: "branding-experiments", name: "Branding Experiments", year: "2023" },
-  { slug: "3d-studies", name: "3D Studies", year: "2023" },
+export type ArchiveMedia =
+  | { kind: "video"; src: string }
+  | { kind: "image"; src: string };
+
+export type Archive = {
+  slug: string;
+  name: string;
+  year: string;
+  type: string;
+  description: string;
+  media: ArchiveMedia[];
+};
+
+export const archives: Archive[] = [
+  {
+    slug: "final-final-final",
+    name: "Final Final Final",
+    year: "2024",
+    type: "Motion Design",
+    description: "A motion piece pushing the boundaries of iteration — every version a final, until it wasn't.",
+    media: [{ kind: "video", src: "/archives/final-final-final.mp4" }],
+  },
+  {
+    slug: "prueba-2",
+    name: "Prueba 2",
+    year: "2024",
+    type: "3D / Experiment",
+    description: "A raw test — no brief, no client. Just exploring what happens when you let the tool lead.",
+    media: [{ kind: "video", src: "/archives/prueba-2.mp4" }],
+  },
+  {
+    slug: "toiles",
+    name: "Toiles",
+    year: "2023",
+    type: "Digital Painting",
+    description: "A series of digital canvas experiments — textures, light, and form without constraints.",
+    media: [
+      { kind: "image", src: "/archives/toiles/test--dos-telas.png" },
+      { kind: "image", src: "/archives/toiles/test--dos-telas-2.png" },
+      { kind: "image", src: "/archives/toiles/test-4.png" },
+      { kind: "image", src: "/archives/toiles/test-5.png" },
+      { kind: "image", src: "/archives/toiles/test-6.png" },
+      { kind: "image", src: "/archives/toiles/test-7.png" },
+      { kind: "image", src: "/archives/toiles/test-8.png" },
+      { kind: "image", src: "/archives/toiles/test-9.png" },
+      { kind: "image", src: "/archives/toiles/test-zoom.png" },
+      { kind: "image", src: "/archives/toiles/test-zoom-2.png" },
+      { kind: "image", src: "/archives/toiles/test-zoom-3.png" },
+      { kind: "image", src: "/archives/toiles/test-zoom-4.png" },
+      { kind: "image", src: "/archives/toiles/test-zoom-5.png" },
+    ],
+  },
 ];
