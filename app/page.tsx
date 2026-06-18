@@ -161,11 +161,18 @@ export default function Home() {
           </h2>
           <CopyEmail email="nael.lamaison@ik.me" />
           <div className="mt-10 flex gap-6 text-sm text-fourth">
-            <span>Instagram</span>
-            <span>YouTube</span>
-            <span>TikTok</span>
-            <span>LinkedIn</span>
-            <span>X</span>
+            {[
+              { label: "Instagram", href: "https://www.instagram.com/naelamaison/" },
+              { label: "YouTube",   href: "https://www.youtube.com/@naelamaison" },
+              { label: "TikTok",    href: "https://www.tiktok.com/@naelamaison" },
+              { label: "LinkedIn",  href: "https://www.linkedin.com/in/nael-lamaison-1bb6531b7/" },
+              { label: "X",         href: "https://x.com/naelamaison" },
+            ].map(({ label, href }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors">
+                {label}
+              </a>
+            ))}
           </div>
         </section>
       </SnapContainer>
