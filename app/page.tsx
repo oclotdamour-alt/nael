@@ -61,15 +61,11 @@ export default function Home() {
         {/* ── ABOUT ── */}
         <section
           id="about"
-          className="snap-section relative flex flex-col items-center justify-center px-8 md:px-24 overflow-hidden"
+          className="snap-section flex flex-col items-center justify-center gap-10 px-0 overflow-hidden"
         >
-          {/* Bouncing skills en fond */}
-          <div className="absolute inset-0 pointer-events-none">
-            <BouncingSkills items={[...tools, ...services]} />
-          </div>
+          <Marquee items={tools} direction="left" variant="outline" />
 
-          {/* Texte centré par-dessus */}
-          <div className="relative z-10 max-w-3xl text-center">
+          <div className="max-w-3xl text-center px-8 md:px-24">
             <h2 className="text-4xl md:text-6xl font-medium leading-tight">
               Motion designer & visual artist crafting work that moves —
               not just decorates.
@@ -78,10 +74,12 @@ export default function Home() {
               Specialized in 3D animation and branding. Based in Spain,
               available for projects worldwide.
             </p>
-            <p className="mt-10 text-sm text-fourth">
+            <p className="mt-6 text-sm text-fourth">
               Open to freelance, collaborations, and full-time opportunities.
             </p>
           </div>
+
+          <Marquee items={services} direction="right" variant="filled" />
         </section>
 
         {/* ── PROJECTS ── */}
