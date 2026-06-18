@@ -66,22 +66,22 @@ export default function Home() {
           id="about"
           className="snap-section flex flex-col items-center justify-center px-6 py-24 md:px-24 md:py-0"
         >
-          <div className="max-w-3xl text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-tight">
+          <div className="w-full max-w-3xl text-center">
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-medium leading-[1.15] sm:leading-tight text-balance">
               Motion designer & visual artist crafting work that moves —
               not just decorates.
             </h2>
-            <p className="mt-6 text-base md:text-xl text-fourth">
+            <p className="mt-5 md:mt-6 text-sm sm:text-base md:text-xl text-fourth text-balance">
               Specialized in 3D animation and branding. Based in Spain,
               available for projects worldwide.
             </p>
-            <div className="mt-12 w-full">
+            <div className="mt-10 md:mt-12 w-full">
               <Marquee items={tools} direction="right" variant="outline" />
             </div>
-            <div className="mt-4 w-full">
+            <div className="mt-3 md:mt-4 w-full">
               <Marquee items={services} direction="left" variant="filled" />
             </div>
-            <p className="mt-10 text-sm text-fourth">
+            <p className="mt-8 md:mt-10 text-xs sm:text-sm text-fourth">
               Open to freelance, collaborations, and full-time opportunities.
             </p>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, Suspense, useMemo } from "react";
+import { useEffect, useRef, useState, Suspense } from "react";
 import { usePathname } from "next/navigation";
 import { useVideoContext } from "../context/VideoContext";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -9,18 +9,20 @@ import * as THREE from "three";
 
 const IDLE_DELAY = 20_000;
 
+// Separate GLB copy so the idle character has its OWN scene object and never
+// shares the Three.js hierarchy with the hero canvas (which made it invisible).
 function IdleCharacter() {
   const group = useRef<THREE.Group>(null);
-  const { scene, animations } = useGLTF("/perso-idle.glb");
-
-  // Clone the scene so it doesn't share the same Three.js object with HeroCharacter
-  const clonedScene = useMemo(() => scene.clone(true), [scene]);
-
+  const { scene, animations } = useGLTF("/perso-idle-2.glb");
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
     Object.values(actions).forEach((a) => a?.reset().fadeIn(0.3).play());
-  }, [actions]);
+    // Disable frustum culling so no skinned mesh (shirt, hair) gets culled out
+    scene.traverse((obj) => {
+      if ((obj as THREE.Mesh).isMesh) (obj as THREE.Mesh).frustumCulled = false;
+    });
+  }, [actions, scene]);
 
   useFrame(({ clock }) => {
     if (!group.current) return;
@@ -29,7 +31,7 @@ function IdleCharacter() {
     group.current.position.x = 0;
   });
 
-  return <primitive ref={group} object={clonedScene} scale={1.8} position={[0, -1.1, 0]} />;
+  return <primitive ref={group} object={scene} scale={1.8} position={[0, -1.1, 0]} />;
 }
 
 export default function IdleScreen() {

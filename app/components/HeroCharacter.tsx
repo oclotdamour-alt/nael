@@ -75,11 +75,16 @@ function Character({ mouse, scale }: { mouse: React.MutableRefObject<[number, nu
       if (action) action.reset().fadeIn(0.3).play();
     });
 
-    // Trouve l'os de la tête dans le skeleton
+    // Trouve l'os de la tête dans le skeleton + empêche le frustum culling
+    // qui fait disparaître certains meshes skinnés (t-shirt, cheveux)
     scene.traverse((obj) => {
       const name = obj.name.toLowerCase();
       if (name.includes("head") && !name.includes("headtop") && !name.includes("headend")) {
         headBone.current = obj;
+      }
+      const mesh = obj as THREE.Mesh;
+      if (mesh.isMesh) {
+        mesh.frustumCulled = false;
       }
     });
   }, [actions, scene]);
