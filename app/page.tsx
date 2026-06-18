@@ -10,6 +10,7 @@ import HomeLink from "./components/HomeLink";
 import SnapContainer from "./components/SnapContainer";
 import HeroCharacter from "./components/HeroCharacter";
 import HeroBg from "./components/HeroBg";
+import ScrollCue from "./components/ScrollCue";
 import { projects } from "./data/projects";
 
 const tools = ["Blender", "Adobe Suite", "Unreal Engine 5", "DaVinci Resolve", "Rive"];
@@ -52,13 +53,7 @@ export default function Home() {
           </div>
 
           {/* Scroll hint */}
-          <a
-            href="#about"
-            className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-10 flex items-center gap-2 text-xs md:text-sm font-medium text-white/90 tracking-widest uppercase drop-shadow-lg hover:text-white transition-colors"
-          >
-            <span>Scroll</span>
-            <span className="inline-block animate-bounce">↓</span>
-          </a>
+          <ScrollCue />
         </section>
 
         {/* ── ABOUT ── */}
