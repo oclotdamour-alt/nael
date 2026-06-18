@@ -26,16 +26,22 @@ export default function AudioManager() {
       audio.play().then(() => setStarted(true)).catch(() => {});
       window.removeEventListener("click", start);
       window.removeEventListener("keydown", start);
+      window.removeEventListener("mousemove", start);
+      window.removeEventListener("touchstart", start);
     };
 
     window.addEventListener("click", start);
     window.addEventListener("keydown", start);
+    window.addEventListener("mousemove", start, { once: true });
+    window.addEventListener("touchstart", start, { once: true });
 
     return () => {
       audio.pause();
       audio.src = "";
       window.removeEventListener("click", start);
       window.removeEventListener("keydown", start);
+      window.removeEventListener("mousemove", start);
+      window.removeEventListener("touchstart", start);
     };
   }, []);
 
