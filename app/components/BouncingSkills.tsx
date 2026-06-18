@@ -15,18 +15,18 @@ const ALL_ITEMS = [
   { label: "Content", variant: "filled" },
 ];
 
-// Positions fixes dans la zone, bien réparties
+// Positions sur les côtés gauche et droit uniquement
 const POSITIONS = [
-  { x: 6,  y: 8  },
-  { x: 55, y: 5  },
-  { x: 78, y: 14 },
-  { x: 20, y: 22 },
-  { x: 68, y: 28 },
-  { x: 8,  y: 62 },
-  { x: 42, y: 70 },
-  { x: 72, y: 65 },
-  { x: 25, y: 80 },
-  { x: 60, y: 82 },
+  { x: 1,  y: 8  },
+  { x: 2,  y: 28 },
+  { x: 0,  y: 50 },
+  { x: 1,  y: 70 },
+  { x: 2,  y: 88 },
+  { x: 72, y: 12 },
+  { x: 74, y: 32 },
+  { x: 71, y: 52 },
+  { x: 73, y: 72 },
+  { x: 72, y: 88 },
 ];
 
 export default function BouncingSkills({ items }: { items: string[] }) {
@@ -40,7 +40,7 @@ export default function BouncingSkills({ items }: { items: string[] }) {
     })), [items]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden">
       <style>{`
         @keyframes float-tag {
           0%, 100% { transform: translateY(0px); }
@@ -50,10 +50,10 @@ export default function BouncingSkills({ items }: { items: string[] }) {
       {tags.map((tag) => (
         <span
           key={tag.label}
-          className={`absolute whitespace-nowrap text-xs font-medium rounded-full px-4 py-1.5 shadow-sm ${
+          className={`absolute whitespace-nowrap text-xs font-medium rounded-full px-4 py-1.5 shadow-sm cursor-default transition-all duration-200 hover:scale-110 hover:shadow-md ${
             tag.variant === "outline"
-              ? "border border-foreground/40 text-foreground bg-background"
-              : "bg-foreground text-background"
+              ? "border border-foreground/40 text-foreground bg-background hover:bg-foreground hover:text-background hover:border-foreground"
+              : "bg-foreground text-background hover:bg-third hover:border-third"
           }`}
           style={{
             left: `${tag.pos.x}%`,
