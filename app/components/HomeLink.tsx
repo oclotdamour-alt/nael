@@ -13,6 +13,8 @@ export default function HomeLink() {
     if (snapContainer) {
       snapContainer.scrollTo({ top: 0, behavior: "smooth" });
     }
+    // Sur mobile, c'est la fenêtre qui scrolle
+    window.scrollTo({ top: 0, behavior: "smooth" });
     router.push("/");
   };
 

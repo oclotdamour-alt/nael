@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk } from "next/font/google";
 import PreLoader from "./components/PreLoader";
 import KonamiCode from "./components/KonamiCode";
@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   title: "Nael Lamaison — Motion Designer & Visual Artist",
   description:
     "Motion designer & visual artist specialized in 3D animation and branding.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

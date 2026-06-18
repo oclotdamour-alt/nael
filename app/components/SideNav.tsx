@@ -48,7 +48,7 @@ export default function SideNav() {
 
   return (
     <nav
-      className={`fixed right-6 top-1/2 z-50 -translate-y-1/2 transition-all duration-500 ${
+      className={`hidden md:block fixed right-6 top-1/2 z-50 -translate-y-1/2 transition-all duration-500 ${
         heroVisible ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >

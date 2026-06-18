@@ -29,10 +29,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </p>
           <BackButton />
         </div>
-        <h1 className="text-5xl md:text-7xl font-medium leading-none mb-8">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-medium leading-none mb-8">
           {project.name}
         </h1>
-        <p className="max-w-2xl text-lg text-foreground/70 mb-16">
+        <p className="max-w-2xl text-base md:text-lg text-foreground/70 mb-12 md:mb-16">
           {project.description}
         </p>
 

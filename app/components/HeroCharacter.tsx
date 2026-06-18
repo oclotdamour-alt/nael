@@ -1,14 +1,13 @@
 "use client";
 
-import { useRef, useEffect, Suspense, useMemo } from "react";
+import { useRef, useEffect, useState, Suspense, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 
-const PARTICLE_COUNT = 120;
-
-function WindParticles() {
+function WindParticles({ count = 120 }: { count?: number }) {
   const mesh = useRef<THREE.Points>(null);
+  const PARTICLE_COUNT = count;
 
   const { positions, speeds, offsets } = useMemo(() => {
     const positions = new Float32Array(PARTICLE_COUNT * 3);
@@ -23,7 +22,7 @@ function WindParticles() {
       offsets[i] = Math.random() * Math.PI * 2;
     }
     return { positions, speeds, offsets };
-  }, []);
+  }, [PARTICLE_COUNT]);
 
   useFrame(({ clock }) => {
     if (!mesh.current) return;
@@ -64,7 +63,7 @@ function WindParticles() {
 
 const BASE_Y = -1.1;
 
-function Character({ mouse }: { mouse: React.MutableRefObject<[number, number]> }) {
+function Character({ mouse, scale }: { mouse: React.MutableRefObject<[number, number]>; scale: number }) {
   const group = useRef<THREE.Group>(null);
   const headBone = useRef<THREE.Object3D | null>(null);
   const windVelocity = useRef({ z: 0, x: 0 });
@@ -116,13 +115,21 @@ function Character({ mouse }: { mouse: React.MutableRefObject<[number, number]> 
     <primitive
       ref={group}
       object={scene}
-      scale={1.8}
+      scale={scale}
     />
   );
 }
 
 export default function HeroCharacter() {
   const mouse = useRef<[number, number]>([0, 0]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
@@ -145,16 +152,18 @@ export default function HeroCharacter() {
       }}
     >
       <Canvas
-        camera={{ position: [0, 0.3, 5.5], fov: 48 }}
+        key={isMobile ? "mobile" : "desktop"}
+        camera={{ position: [0, 0.3, isMobile ? 7.8 : 5.5], fov: isMobile ? 50 : 48 }}
         gl={{ alpha: true, antialias: true }}
+        dpr={[1, isMobile ? 1.5 : 2]}
         style={{ background: "transparent" }}
       >
         <ambientLight intensity={0.7} />
         <directionalLight position={[3, 6, 4]} intensity={1.2} />
         <directionalLight position={[-3, 2, -2]} intensity={0.3} />
-        <WindParticles />
+        <WindParticles count={isMobile ? 50 : 120} />
         <Suspense fallback={null}>
-          <Character mouse={mouse} />
+          <Character mouse={mouse} scale={isMobile ? 1.45 : 1.8} />
         </Suspense>
       </Canvas>
     </div>

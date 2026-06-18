@@ -59,6 +59,21 @@ body {
   scrollbar-width: none;
 }
 
+/* ── MOBILE: natural scroll, sections grow to fit content ── */
+@media (max-width: 767px) {
+  .snap-container {
+    height: auto;
+    overflow-y: visible;
+    scroll-snap-type: none;
+  }
+  .snap-section {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+    height: auto;
+    min-height: 100svh;
+  }
+}
+
 @keyframes preloader-spin {
   0% {
     transform: rotate(0deg) scale(1);

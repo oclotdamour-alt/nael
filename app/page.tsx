@@ -42,11 +42,11 @@ export default function Home() {
           <HeroCharacter />
 
           {/* Name overlay — bottom left */}
-          <div className="absolute bottom-10 left-10 z-10 rounded-2xl px-6 py-5 backdrop-blur-md bg-black/20 border border-white/10">
-            <p className="text-xs uppercase tracking-widest text-white/60 mb-1">
+          <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10 rounded-2xl px-4 py-4 md:px-6 md:py-5 backdrop-blur-md bg-black/20 border border-white/10">
+            <p className="text-[10px] md:text-xs uppercase tracking-widest text-white/60 mb-1">
               Motion Designer & Visual Artist
             </p>
-            <h1 className="text-5xl md:text-7xl font-medium text-white leading-none">
+            <h1 className="text-4xl md:text-7xl font-medium text-white leading-none">
               Nael<br />Lamaison
             </h1>
           </div>
@@ -54,7 +54,7 @@ export default function Home() {
           {/* Scroll hint */}
           <a
             href="#about"
-            className="absolute bottom-10 right-10 z-10 flex items-center gap-2 text-sm font-medium text-white/90 tracking-widest uppercase drop-shadow-lg hover:text-white transition-colors"
+            className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-10 flex items-center gap-2 text-xs md:text-sm font-medium text-white/90 tracking-widest uppercase drop-shadow-lg hover:text-white transition-colors"
           >
             <span>Scroll</span>
             <span className="inline-block animate-bounce">↓</span>
@@ -64,14 +64,14 @@ export default function Home() {
         {/* ── ABOUT ── */}
         <section
           id="about"
-          className="snap-section flex flex-col items-center justify-center px-8 md:px-24"
+          className="snap-section flex flex-col items-center justify-center px-6 py-24 md:px-24 md:py-0"
         >
           <div className="max-w-3xl text-center">
-            <h2 className="text-4xl md:text-6xl font-medium leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium leading-tight">
               Motion designer & visual artist crafting work that moves —
               not just decorates.
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-fourth">
+            <p className="mt-6 text-base md:text-xl text-fourth">
               Specialized in 3D animation and branding. Based in Spain,
               available for projects worldwide.
             </p>
@@ -90,9 +90,9 @@ export default function Home() {
         {/* ── PROJECTS ── */}
         <section
           id="projects"
-          className="snap-section flex flex-col items-center justify-center px-8 md:px-24"
+          className="snap-section flex flex-col items-center justify-center px-6 py-24 md:px-24 md:py-0"
         >
-          <div className="mb-12 flex w-full max-w-4xl items-center justify-between">
+          <div className="mb-8 md:mb-12 flex w-full max-w-4xl items-center justify-between">
             <h2 className="text-sm uppercase tracking-widest text-fourth">
               Selected Works
             </h2>
@@ -103,7 +103,7 @@ export default function Home() {
               See all projects →
             </Link>
           </div>
-          <div className="grid w-full max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             {projects.map((project) => (
               <Link
                 key={project.slug}
@@ -138,7 +138,7 @@ export default function Home() {
         {/* ── ARCHIVES ── */}
         <section
           id="archives"
-          className="snap-section flex flex-col items-center justify-center px-8 md:px-24"
+          className="snap-section flex flex-col items-center justify-center px-6 py-24 md:px-24 md:py-0"
         >
           <h2 className="mb-6 text-sm uppercase tracking-widest text-fourth">
             Archives
@@ -157,13 +157,13 @@ export default function Home() {
         {/* ── CONTACT ── */}
         <section
           id="contact"
-          className="snap-section flex flex-col items-center justify-center px-8 md:px-24"
+          className="snap-section flex flex-col items-center justify-center px-6 py-24 md:px-24 md:py-0"
         >
           <h2 className="mb-6 text-sm uppercase tracking-widest text-fourth">
             Contact
           </h2>
           <CopyEmail email="nael.lamaison@ik.me" />
-          <div className="mt-10 flex gap-6 text-sm text-fourth">
+          <div className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-fourth">
             {[
               { label: "Instagram", href: "https://www.instagram.com/naelamaison/" },
               { label: "YouTube",   href: "https://www.youtube.com/@naelamaison" },

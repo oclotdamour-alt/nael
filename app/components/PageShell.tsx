@@ -3,7 +3,7 @@ import HomeLink from "./HomeLink";
 
 export default function PageShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-svh px-8 py-24 md:px-24">
+    <div className="min-h-svh px-6 py-24 md:px-24">
       <header className="fixed top-6 left-6 z-50 flex flex-col gap-3 text-foreground">
         <HomeLink />
       </header>
