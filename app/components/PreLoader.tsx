@@ -4,11 +4,17 @@ import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
 export default function PreLoader() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [progress, setProgress] = useState(0);
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
+    if (sessionStorage.getItem("preloader_shown")) return;
+    setShow(true);
+  }, []);
+
+  useEffect(() => {
+    if (!show) return;
     let raf: number;
     const start = performance.now();
     const duration = 1600;
@@ -22,6 +28,7 @@ export default function PreLoader() {
         raf = requestAnimationFrame(tick);
       } else {
         setExiting(true);
+        sessionStorage.setItem("preloader_shown", "1");
         setTimeout(() => setShow(false), 600);
       }
     };
