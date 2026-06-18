@@ -50,10 +50,10 @@ export default function BouncingSkills({ items }: { items: string[] }) {
       {tags.map((tag) => (
         <span
           key={tag.label}
-          className={`absolute whitespace-nowrap text-xs font-medium rounded-full px-4 py-1.5 ${
+          className={`absolute whitespace-nowrap text-xs font-medium rounded-full px-4 py-1.5 shadow-sm ${
             tag.variant === "outline"
-              ? "border border-foreground/20 text-foreground/50 bg-background/30 backdrop-blur-sm"
-              : "bg-foreground/8 text-foreground/50 backdrop-blur-sm"
+              ? "border border-foreground/40 text-foreground bg-background"
+              : "bg-foreground text-background"
           }`}
           style={{
             left: `${tag.pos.x}%`,
