@@ -57,7 +57,7 @@ export default function AudioManager() {
     <button
       onClick={() => setMuted((m) => !m)}
       aria-label={muted ? "Unmute" : "Mute"}
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/10 backdrop-blur-md text-foreground/70 hover:text-foreground hover:bg-white/20 hover:border-white/20 transition-all shadow-sm"
+      className="fixed bottom-20 right-6 z-50 flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/10 backdrop-blur-md text-foreground/70 hover:text-foreground hover:bg-white/20 hover:border-white/20 transition-all shadow-sm"
     >
       {muted ? (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
