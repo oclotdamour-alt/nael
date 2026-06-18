@@ -35,7 +35,7 @@ export default function PreLoader() {
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [show]);
 
   useEffect(() => {
     document.body.style.overflow = show ? "hidden" : "";
