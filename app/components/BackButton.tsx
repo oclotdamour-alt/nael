@@ -7,9 +7,10 @@ export default function BackButton() {
   return (
     <button
       onClick={() => router.back()}
-      className="text-sm text-fourth hover:text-foreground transition-colors"
+      className="flex items-center gap-1.5 text-sm text-fourth hover:text-foreground transition-colors group"
     >
-      ← Back
+      <span className="inline-block transition-transform group-hover:-translate-x-1">←</span>
+      Back
     </button>
   );
 }
