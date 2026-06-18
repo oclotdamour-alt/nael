@@ -52,10 +52,13 @@ export default function Home() {
           </div>
 
           {/* Scroll hint */}
-          <div className="absolute bottom-10 right-10 z-10 flex items-center gap-2 text-sm font-medium text-white/90 tracking-widest uppercase drop-shadow-lg">
+          <a
+            href="#about"
+            className="absolute bottom-10 right-10 z-10 flex items-center gap-2 text-sm font-medium text-white/90 tracking-widest uppercase drop-shadow-lg hover:text-white transition-colors"
+          >
             <span>Scroll</span>
             <span className="inline-block animate-bounce">↓</span>
-          </div>
+          </a>
         </section>
 
         {/* ── ABOUT ── */}
