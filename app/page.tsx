@@ -5,6 +5,7 @@ import SideNav from "./components/SideNav";
 import CopyEmail from "./components/CopyEmail";
 import ThemeToggle from "./components/ThemeToggle";
 import Marquee from "./components/Marquee";
+import BouncingSkills from "./components/BouncingSkills";
 import HomeLink from "./components/HomeLink";
 import SnapContainer from "./components/SnapContainer";
 import HeroCharacter from "./components/HeroCharacter";
@@ -60,9 +61,15 @@ export default function Home() {
         {/* ── ABOUT ── */}
         <section
           id="about"
-          className="snap-section flex flex-col items-center justify-center px-8 md:px-24"
+          className="snap-section relative flex flex-col items-center justify-center px-8 md:px-24 overflow-hidden"
         >
-          <div className="max-w-3xl text-center">
+          {/* Bouncing skills en fond */}
+          <div className="absolute inset-0 pointer-events-none">
+            <BouncingSkills items={[...tools, ...services]} />
+          </div>
+
+          {/* Texte centré par-dessus */}
+          <div className="relative z-10 max-w-3xl text-center">
             <h2 className="text-4xl md:text-6xl font-medium leading-tight">
               Motion designer & visual artist crafting work that moves —
               not just decorates.
@@ -71,15 +78,6 @@ export default function Home() {
               Specialized in 3D animation and branding. Based in Spain,
               available for projects worldwide.
             </p>
-
-            <div className="mt-12 w-full">
-              <Marquee items={tools} direction="right" variant="outline" />
-            </div>
-
-            <div className="mt-4 w-full">
-              <Marquee items={services} direction="left" variant="filled" />
-            </div>
-
             <p className="mt-10 text-sm text-fourth">
               Open to freelance, collaborations, and full-time opportunities.
             </p>
