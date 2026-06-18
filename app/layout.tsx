@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import PreLoader from "./components/PreLoader";
 import KonamiCode from "./components/KonamiCode";
 import AudioManager from "./components/AudioManager";
+import IdleScreen from "./components/IdleScreen";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -39,6 +40,7 @@ export default function RootLayout({
         <PreLoader />
         <KonamiCode />
         <AudioManager />
+        <IdleScreen />
         {children}
       </body>
     </html>
