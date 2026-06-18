@@ -105,10 +105,10 @@ function Character({ mouse }: { mouse: React.MutableRefObject<[number, number]> 
 
     // Tête suit la souris doucement
     if (headBone.current) {
-      const targetY = mouse.current[0] * 1.1;
-      const targetX = -mouse.current[1] * 0.55;
-      headBone.current.rotation.y += (targetY - headBone.current.rotation.y) * 0.06;
-      headBone.current.rotation.x += (targetX - headBone.current.rotation.x) * 0.06;
+      const targetY = mouse.current[0] * 1.6;
+      const targetX = -mouse.current[1] * 0.8;
+      headBone.current.rotation.y += (targetY - headBone.current.rotation.y) * 0.18;
+      headBone.current.rotation.x += (targetX - headBone.current.rotation.x) * 0.18;
     }
   });
 
