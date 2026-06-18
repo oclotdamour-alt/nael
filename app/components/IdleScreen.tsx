@@ -6,7 +6,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 
-const IDLE_DELAY = 60_000;
+const IDLE_DELAY = 30_000;
 
 function IdleCharacter() {
   const group = useRef<THREE.Group>(null);
