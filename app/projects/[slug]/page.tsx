@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import VideoPlayer from "../../components/VideoPlayer";
 import PageShell from "../../components/PageShell";
+import BackButton from "../../components/BackButton";
 import { projects } from "../../data/projects";
 
 export function generateStaticParams() {
@@ -22,9 +23,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <PageShell>
       <div className="max-w-5xl mx-auto">
-        <p className="text-xs uppercase tracking-widest text-fourth mb-3">
-          {project.type} — {project.year}
-        </p>
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-xs uppercase tracking-widest text-fourth">
+            {project.type} — {project.year}
+          </p>
+          <BackButton />
+        </div>
         <h1 className="text-5xl md:text-7xl font-medium leading-none mb-8">
           {project.name}
         </h1>
