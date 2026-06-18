@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import PreLoader from "./components/PreLoader";
+import KonamiCode from "./components/KonamiCode";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -35,6 +36,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full bg-background text-foreground">
         <PreLoader />
+        <KonamiCode />
         {children}
       </body>
     </html>
