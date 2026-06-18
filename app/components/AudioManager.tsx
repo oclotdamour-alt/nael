@@ -17,6 +17,7 @@ export default function AudioManager() {
     const audio = new Audio("/site-music.m4a");
     audio.loop = true;
     audio.volume = 0.5;
+    audio.addEventListener("ended", () => { audio.currentTime = 0; audio.play().catch(() => {}); });
     audioRef.current = audio;
 
     const start = () => {
