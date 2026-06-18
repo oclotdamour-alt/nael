@@ -42,6 +42,8 @@ body {
   height: 100svh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  /* smooth in-container anchor scrolling (e.g. the hero "Scroll ↓" → #about) */
+  scroll-behavior: smooth;
 }
 
 .snap-section {
