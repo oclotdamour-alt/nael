@@ -3,13 +3,15 @@
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
+let hasShown = false;
+
 export default function PreLoader() {
   const [show, setShow] = useState(false);
   const [progress, setProgress] = useState(0);
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem("preloader_shown")) return;
+    if (hasShown) return;
     setShow(true);
   }, []);
 
@@ -28,7 +30,7 @@ export default function PreLoader() {
         raf = requestAnimationFrame(tick);
       } else {
         setExiting(true);
-        sessionStorage.setItem("preloader_shown", "1");
+        hasShown = true;
         setTimeout(() => setShow(false), 600);
       }
     };
