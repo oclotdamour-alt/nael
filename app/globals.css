@@ -59,15 +59,14 @@ body {
   scrollbar-width: none;
 }
 
-/* ── MOBILE: natural scroll, sections grow to fit content ── */
+/* ── MOBILE: keep snap, but let sections grow so tall ones (Projects) aren't
+   clipped. proximity (not mandatory) snaps viewport-height sections while still
+   letting the user scroll freely through taller-than-viewport content. ── */
 @media (max-width: 767px) {
   .snap-container {
-    height: auto;
-    overflow-y: visible;
-    scroll-snap-type: none;
+    scroll-snap-type: y proximity;
   }
   .snap-section {
-    scroll-snap-align: none;
     scroll-snap-stop: normal;
     height: auto;
     min-height: 100svh;
