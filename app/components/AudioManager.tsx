@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useVideoContext } from "../context/VideoContext";
 
 const SILENT_PATHS = ["/disco"];
 
@@ -10,6 +11,7 @@ export default function AudioManager() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [muted, setMuted] = useState(false);
   const [started, setStarted] = useState(false);
+  const { videoUnmuted } = useVideoContext();
 
   const isSilent = SILENT_PATHS.includes(pathname);
 
@@ -50,6 +52,11 @@ export default function AudioManager() {
   useEffect(() => {
     if (audioRef.current) audioRef.current.muted = muted;
   }, [muted]);
+
+  // Auto-mute background music when a video is unmuted
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.muted = muted || videoUnmuted;
+  }, [videoUnmuted, muted]);
 
   if (isSilent) return null;
 

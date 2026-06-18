@@ -1,16 +1,25 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useVideoContext } from "../context/VideoContext";
 
 export default function VideoPlayer({ src }: { src: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
+  const { setVideoUnmuted } = useVideoContext();
 
   const toggleMute = () => {
     if (!videoRef.current) return;
     videoRef.current.muted = !videoRef.current.muted;
-    setMuted(videoRef.current.muted);
+    const nowMuted = videoRef.current.muted;
+    setMuted(nowMuted);
+    setVideoUnmuted(!nowMuted);
   };
+
+  // Clean up when component unmounts (leaving the page)
+  useEffect(() => {
+    return () => setVideoUnmuted(false);
+  }, [setVideoUnmuted]);
 
   return (
     <div className="relative w-full rounded-2xl overflow-hidden mb-6">

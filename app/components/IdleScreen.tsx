@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, Suspense, useMemo } from "react";
 import { usePathname } from "next/navigation";
+import { useVideoContext } from "../context/VideoContext";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
@@ -35,8 +36,9 @@ export default function IdleScreen() {
   const [bubbleVisible, setBubbleVisible] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
+  const { videoUnmuted } = useVideoContext();
 
-  const isExcluded = pathname === "/disco";
+  const isExcluded = pathname === "/disco" || videoUnmuted;
 
   const reset = () => {
     if (idle) setIdle(false);

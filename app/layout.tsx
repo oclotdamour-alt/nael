@@ -4,6 +4,7 @@ import PreLoader from "./components/PreLoader";
 import KonamiCode from "./components/KonamiCode";
 import AudioManager from "./components/AudioManager";
 import IdleScreen from "./components/IdleScreen";
+import { VideoProvider } from "./context/VideoContext";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -37,11 +38,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-background text-foreground">
-        <PreLoader />
-        <KonamiCode />
-        <AudioManager />
-        <IdleScreen />
-        {children}
+        <VideoProvider>
+          <PreLoader />
+          <KonamiCode />
+          <AudioManager />
+          <IdleScreen />
+          {children}
+        </VideoProvider>
       </body>
     </html>
   );
